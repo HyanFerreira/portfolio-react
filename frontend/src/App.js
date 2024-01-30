@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './App.css';
 import image from './images';
-import { Navigation, Profile, ProjectCarousel } from './components';
+import { Navigation, Footer, ProjectCarousel, ContactUs } from './components';
 
 function App() {
   return (
@@ -40,17 +40,23 @@ function App() {
               <span className="span-green">Follow me on:</span>
               <div className="line"></div>
               <div className="social-media">
-                <a href="https://www.instagram.com/hferreira_dev" target='_blank'>
+                <a
+                  href="https://www.instagram.com/hferreira_dev"
+                  target="_blank"
+                >
                   <div className="media-item">
                     <img src={image.Instagram} alt="Instagram" />
                   </div>
                 </a>
-                <a href="https://www.linkedin.com/in/hyanferreira" target='_blank'>
+                <a
+                  href="https://www.linkedin.com/in/hyanferreira"
+                  target="_blank"
+                >
                   <div className="media-item">
                     <img src={image.Linkedin} alt="Linkedin" />
                   </div>
                 </a>
-                <a href="https://twitter.com/hferreira_dev" target='_blank'>
+                <a href="https://twitter.com/hferreira_dev" target="_blank">
                   <div className="media-item">
                     <img src={image.Twitter} alt="Twitter" />
                   </div>
@@ -66,6 +72,7 @@ function App() {
         </div>
       </header>
       <main className="main">
+        <section className="skills"></section>
         <section className="projects">
           <div className="project-content">
             <span className="span-green">My Projects</span>
@@ -83,7 +90,16 @@ function App() {
           </div>
           <ProjectCarousel></ProjectCarousel>
         </section>
+        <section className="contact">
+          <h1 className="span-green">Contact Me</h1>
+          <div className="contact-content">
+            <div className="form-content">
+              <ContactUs></ContactUs>
+            </div>
+          </div>
+        </section>
       </main>
+      <Footer></Footer>
     </div>
   );
 }
