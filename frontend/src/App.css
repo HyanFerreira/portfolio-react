@@ -196,8 +196,8 @@
   width: 32px;
 }
 
-.media-item:nth-child(1) img {
-  width: 26px;
+.social-media a:nth-child(1) img {
+  width: 24px;
 }
 
 .mouse-animation {
