@@ -30,6 +30,11 @@ const Navigation = () => {
           </li>
         </ul>
       </div>
+      <div className="hamburguer">
+        <div className="bar"></div>
+        <div className="bar"></div>
+        <div className="bar"></div>
+      </div>
     </nav>
   );
 };
