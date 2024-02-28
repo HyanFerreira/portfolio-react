@@ -51,12 +51,12 @@ const Footer = () => {
 };
 
 const ProjectCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const cardWidth = 200;
   const gap = 30;
-  const numCards = 4; // Alterar de acordo com Nº de cards
 
   const updateSliderWidth = () => {
+    const numCards = document.querySelectorAll('.model-project').length;
     return (cardWidth + gap) * numCards;
   };
 
@@ -65,32 +65,34 @@ const ProjectCarousel = () => {
     slider.style.width = `${updateSliderWidth()}px`;
   }, [updateSliderWidth]);
 
-  useEffect(() => {
-    const slider = document.querySelector('.content-carousel');
-    slider.style.transition = 'transform 900ms';
-    slider.style.transform = `translate(-${
-      (cardWidth + gap) * currentIndex
-    }px)`;
-  }, [currentIndex]);
-
   const nextSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex === numCards - 3) {
-        return 0;
-      } else {
-        return prevIndex + 1;
-      }
-    });
+    const slider = document.querySelector('.content-carousel');
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      slider.style.transition = 'transform 900ms';
+      slider.style.transform = `translate(-${cardWidth + gap}px)`;
+      setTimeout(() => {
+        slider.style.transition = 'none';
+        slider.style.transform = 'translate(0)';
+        slider.appendChild(slider.firstElementChild);
+        setIsTransitioning(false);
+      }, 900);
+    }
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prevIndex) => {
-      if (prevIndex === 0) {
-        return numCards - 3;
-      } else {
-        return prevIndex - 1;
-      }
-    });
+    const slider = document.querySelector('.content-carousel');
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      slider.insertBefore(slider.lastElementChild, slider.firstElementChild);
+      slider.style.transition = 'none';
+      slider.style.transform = `translate(-${cardWidth + gap}px)`;
+      setTimeout(() => {
+        slider.style.transition = 'transform 900ms';
+        slider.style.transform = 'translate(0)';
+        setIsTransitioning(false);
+      }, 0);
+    }
   };
 
   return (
@@ -110,6 +112,11 @@ const ProjectCarousel = () => {
           <div className="model-project">
             <a href="https://movieuniverse2023.netlify.app/" target="_blank">
               <img src={image.Project3} />
+            </a>
+          </div>
+          <div className="model-project">
+            <a href="https://saveplant.netlify.app/" target="_blank">
+              <img src={image.Project4} />
             </a>
           </div>
           <div className="model-project">

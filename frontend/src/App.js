@@ -2,8 +2,20 @@ import React, { useEffect, useState } from 'react';
 import './App.css';
 import image from './images';
 import { Navigation, Footer, ProjectCarousel, ContactUs } from './components';
+import ScrollReveal from 'scrollreveal';
 
 function App() {
+  useEffect(() => {
+    const sr = ScrollReveal();
+    sr.reveal('.scroll-hidden', {
+      distance: '150%',
+      origin: 'bottom',
+      opacity: 0,
+      delay: 400,
+      reset: false,
+    });
+  }, []);
+
   return (
     <div className="App">
       <header className="header">
@@ -72,25 +84,27 @@ function App() {
         </div>
       </header>
       <main className="main">
-        <section className="skills"></section>
-        <section className="projects">
-          <div className="project-content">
-            <span className="span-green">My Projects</span>
-            <h1>
-              My Most <br></br> Latest{' '}
-              <span className="span-green">Projects</span>
-            </h1>
-            <span className="span-opacity">
-              I have selected some of my latest <br></br> projects to share with
-              you.
-            </span>
-            <a href="https://www.github.com/hyanferreira" target="_blank">
-              <button className="btn btn-github">My GitHub</button>
-            </a>
+        {/* <section className="skills"></section> */}
+        <section className="projects scroll-hidden">
+          <div className="project-container">
+            <div className="project-content">
+              <span className="span-green">My Projects</span>
+              <h1>
+                My Most <br></br> Latest{' '}
+                <span className="span-green">Projects</span>
+              </h1>
+              <span className="span-opacity">
+                I have selected some of my latest <br></br> projects to share
+                with you.
+              </span>
+              <a href="https://www.github.com/hyanferreira" target="_blank">
+                <button className="btn btn-github">My GitHub</button>
+              </a>
+            </div>
+            <ProjectCarousel></ProjectCarousel>
           </div>
-          <ProjectCarousel></ProjectCarousel>
         </section>
-        <section className="contact">
+        <section className="contact scroll-hidden">
           <h1 className="span-green">Contact Me</h1>
           <div className="contact-content">
             <div className="form-content">
