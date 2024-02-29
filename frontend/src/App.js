@@ -84,7 +84,36 @@ function App() {
         </div>
       </header>
       <main className="main">
-        {/* <section className="skills"></section> */}
+        <section className="skills scroll-hidden">
+          <div className="skills-container">
+            <div className="skills-content">
+              <div className="skills-block-one">
+                <div className="icon-line-skills">
+                  <div className="icon-skill is-45"></div>
+                  <div className="line-skill"></div>
+                </div>
+                <div className="details-skills">
+                  <h1>
+                    My <span className="span-green">Skills</span>
+                  </h1>
+                </div>
+              </div>
+              <div className="skills-block-one">
+                <div className="icon-line-skills">
+                  <div className="icon-skill">
+                  <img src={image.Communication} alt="Communication" />
+                  </div>
+                  <div className="line-skill"></div>
+                </div>
+                <div className="details-skills">
+                  <h2>
+                    <span className="span-green">Communication</span>
+                  </h2>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
         <section className="projects scroll-hidden">
           <div className="project-container">
             <div className="project-content">

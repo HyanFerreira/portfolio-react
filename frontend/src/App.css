@@ -60,9 +60,9 @@
 .header {
   width: 100%;
   height: 100vh;
-  background-image: url(./assets/img/bg.png);
+  /* background-image: url(./assets/img/bg.png);
   background-position: center;
-  background-repeat: no-repeat;
+  background-repeat: no-repeat; */
 }
 
 .header-container {
@@ -88,7 +88,8 @@
 
 .content-welcome h1,
 .project-content h1,
-.contact h1 {
+.contact h1,
+.skills-content h1 {
   font-size: 40px;
 }
 
@@ -278,14 +279,56 @@
 .main {
   width: 100%;
   height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
 }
 
 .skills {
   width: 100%;
   /* height: 500px; */
-  padding: 50px;
+  /* padding: 50px; */
   display: flex;
   justify-content: center;
+}
+
+.skills-block-one {
+  display: flex;
+  gap: 5px;
+}
+
+.icon-line-skills {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.icon-skill {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.is-45 {
+  width: 28px;
+  height: 28px;
+  border: 3px solid #0DB75F;
+  transform: rotate(45deg);
+  margin: 10px;
+}
+
+.line-skill {
+  width: 3px;
+  height: 150px;
+  background-color: #0DB75F;
+}
+
+.details-skills h2 {
+  margin: 10px 0 10px 0;
 }
 
 .projects {
@@ -398,7 +441,7 @@
 .contact {
   width: 100%;
   height: auto;
-  padding: 50px 10px 100px 10px;
+  /* padding: 50px 10px 100px 10px; */
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -465,6 +508,7 @@
 .footer {
   width: 100%;
   height: auto;
+  padding-top: 50px;
 }
 
 .footer-bottom {
@@ -487,7 +531,8 @@
 
   .content-welcome h1,
   .project-content h1,
-  .contact h1 {
+  .contact h1,
+  .skills-content h1 {
     font-size: 30px;
   }
 
@@ -616,6 +661,7 @@
 }
 
 @media (max-width: 500px) {
+
   .content-welcome,
   .project-content {
     padding: 0 20px;
