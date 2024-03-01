@@ -14,6 +14,13 @@ function App() {
       delay: 400,
       reset: false,
     });
+    sr.reveal('.scroll-hidden-top', {
+      distance: '100%',
+      origin: 'top',
+      opacity: 0,
+      delay: 400,
+      reset: false,
+    });
   }, []);
 
   return (
@@ -89,8 +96,11 @@ function App() {
             <div className="skills-content">
               <div className="skills-block-one">
                 <div className="icon-line-skills">
-                  <div className="icon-skill is-45"></div>
-                  <div className="line-skill"></div>
+                  <div className="icon-skill">
+                    <div className="is-45"></div>
+                    <span className="span-filter"></span>
+                  </div>
+                  <div className="line-skill scroll-hidden-top"></div>
                 </div>
                 <div className="details-skills">
                   <h1>
@@ -99,13 +109,14 @@ function App() {
                 </div>
               </div>
               <div className="skills-block-one">
-                <div className="icon-line-skills">
+                <div className="icon-line-skills scroll-hidden-top">
                   <div className="icon-skill">
-                  <img src={image.Communication} alt="Communication" />
+                    <img src={image.Communication} alt="Communication" />
+                    <span className="span-filter"></span>
                   </div>
-                  <div className="line-skill"></div>
+                  <div className="line-skill scroll-hidden-top"></div>
                 </div>
-                <div className="details-skills">
+                <div className="details-skills scroll-hidden-top">
                   <h2>
                     <span className="span-green">Communication</span>
                   </h2>
