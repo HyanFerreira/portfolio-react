@@ -21,6 +21,13 @@ function App() {
       delay: 400,
       reset: false,
     });
+    sr.reveal('.scroll-hidden-rigth', {
+      distance: '150%',
+      origin: 'rigth',
+      opacity: 0,
+      delay: 400,
+      reset: false,
+    });
   }, []);
 
   return (
@@ -60,7 +67,7 @@ function App() {
               <div className="line"></div>
               <div className="social-media">
                 <a
-                  href="https://www.instagram.com/hferreira_dev"
+                  href="https://www.instagram.com/hferreira_dev?igsh=ZTZ2emhxZGlsbDB2"
                   target="_blank"
                 >
                   <div className="media-item">
@@ -93,6 +100,7 @@ function App() {
       <main className="main">
         <section className="skills scroll-hidden">
           <div className="skills-container">
+            <div className="animationRotate scroll-hidden-rigth"></div>
             <div className="skills-content">
               <div className="skills-block-one">
                 <div className="icon-line-skills">
@@ -120,6 +128,68 @@ function App() {
                   <h2>
                     <span className="span-green">Communication</span>
                   </h2>
+                  <span>
+                    Mastering the art of interpersonal dialogue, I excel not
+                    only in coding languages but also in connecting people
+                    through seamless and impactful communication.
+                  </span>
+                </div>
+              </div>
+              <div className="skills-block-one">
+                <div className="icon-line-skills scroll-hidden-top">
+                  <div className="icon-skill">
+                    <img src={image.Creativity} alt="Creativity" />
+                    <span className="span-filter"></span>
+                  </div>
+                  <div className="line-skill scroll-hidden-top"></div>
+                </div>
+                <div className="details-skills scroll-hidden-top">
+                  <h2>
+                    <span className="span-green">Creativity</span>
+                  </h2>
+                  <span>
+                    Unleashing boundless creativity in every line of code and
+                    pixel on the screen, I turn ordinary projects into
+                    extraordinary experiences.
+                  </span>
+                </div>
+              </div>
+              <div className="skills-block-one">
+                <div className="icon-line-skills scroll-hidden-top">
+                  <div className="icon-skill">
+                    <img src={image.Design} alt="Design" />
+                    <span className="span-filter"></span>
+                  </div>
+                  <div className="line-skill scroll-hidden-top"></div>
+                </div>
+                <div className="details-skills scroll-hidden-top">
+                  <h2>
+                    <span className="span-green">Visual Design</span>
+                  </h2>
+                  <span>
+                    Crafting digital masterpieces with a keen eye for
+                    aesthetics, I transform visions into visually stunning
+                    realities.
+                  </span>
+                </div>
+              </div>
+              <div className="skills-block-one">
+                <div className="icon-line-skills scroll-hidden-top">
+                  <div className="icon-skill">
+                    <img src={image.ProblemSolving} alt="ProblemSolving" />
+                    <span className="span-filter"></span>
+                  </div>
+                  <div className="line-skill scroll-hidden-top"></div>
+                </div>
+                <div className="details-skills scroll-hidden-top">
+                  <h2>
+                    <span className="span-green">Problem Solving</span>
+                  </h2>
+                  <span>
+                    As a coding architect, I navigate the labyrinth of
+                    challenges, transforming roadblocks into stepping stones to
+                    innovation.
+                  </span>
                 </div>
               </div>
             </div>

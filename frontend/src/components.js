@@ -4,6 +4,13 @@ import './App.css';
 import image from './images';
 
 const Navigation = () => {
+  const hamburguer = () => {
+    const hamburguer = document.querySelector('.hamburguer');
+    const navbarLinks = document.querySelector('.navbar-links');
+    hamburguer.classList.toggle('active');
+    navbarLinks.classList.toggle('show');
+  };
+
   return (
     <nav className="navbar">
       <div className="navbar-logo">
@@ -30,7 +37,7 @@ const Navigation = () => {
           </li>
         </ul>
       </div>
-      <div className="hamburguer">
+      <div className="hamburguer" onClick={hamburguer}>
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>

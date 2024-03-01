@@ -11,6 +11,9 @@ import project2 from './assets/img/htechinfo-netlify-app.png';
 import project3 from './assets/img/movieuniverse2023-netlify-app.png';
 import project4 from './assets/img/saveplant-netlify-app.png';
 import communication from './assets/img/communication.svg';
+import design from './assets/img/visual_design.svg';
+import problem from './assets/img/problem_solving.svg';
+import creativity from './assets/img/creativity.svg';
 
 const images = {
   Logotipo: logotipo,
@@ -26,6 +29,9 @@ const images = {
   Project3: project3,
   Project4: project4,
   Communication: communication,
+  Design: design,
+  ProblemSolving: problem,
+  Creativity: creativity,
 };
 
 export default images;

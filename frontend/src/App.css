@@ -70,7 +70,7 @@
   height: calc(100% - 100px);
   display: flex;
   position: relative;
-  z-index: 99;
+  /* z-index: 99; */
 }
 
 .header-content-welcome {
@@ -282,6 +282,8 @@
   display: flex;
   flex-direction: column;
   gap: 100px;
+  padding: 100px 0;
+  overflow: hidden;
 }
 
 .skills {
@@ -294,6 +296,28 @@
 
 .skills-container {
   width: 75%;
+  position: relative;
+}
+
+.animationRotate {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 500px;
+  height: 500px;
+  border: 6px solid rgba(13, 183, 95, 0.2);
+  animation: 20s rotateAnimation linear infinite;
+  z-index: 9;
+}
+
+@keyframes rotateAnimation {
+  0% {
+    transform: translate(300px, -50%) rotate(0);
+  }
+
+  100% {
+    transform: translate(300px, -50%) rotate(-360deg)
+  }
 }
 
 .skills-block-one {
@@ -343,9 +367,13 @@
 
 .line-skill {
   width: 3px;
-  height: 250px;
+  height: 150px;
   background-color: rgb(13, 183, 95);
   box-shadow: rgba(13, 183, 95, 0.12) 0px 2px 4px 0px, rgba(13, 183, 95, 0.32) 0px 2px 16px 0px;
+}
+
+.details-skills {
+  max-width: 350px;
 }
 
 .details-skills h2 {
@@ -529,7 +557,6 @@
 .footer {
   width: 100%;
   height: auto;
-  padding-top: 50px;
 }
 
 .footer-bottom {
@@ -651,8 +678,14 @@
     margin: 0 30px;
   }
 
-  .navbar-link {
+  .navbar-links {
     display: none;
+  }
+
+  .navbar-ul-links {
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
   }
 
   .hamburguer {
@@ -678,6 +711,10 @@
   .project-container {
     flex-direction: column;
     gap: 0;
+  }
+
+  .animationRotate {
+    display: none;
   }
 }
 
