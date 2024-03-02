@@ -3,10 +3,34 @@ import emailjs from 'emailjs-com';
 import './App.css';
 import image from './images';
 
+const LinksNavigation = () => {
+  return (
+    <div className="navbar-links">
+      <ul className="navbar-ul-links">
+        <li className="navbar-link">
+          <a href="/">About</a>
+        </li>
+        <li className="navbar-link">
+          <a href="/">Skills</a>
+        </li>
+        <li className="navbar-link">
+          <a href="/">Projects</a>
+        </li>
+        <li className="navbar-link">
+          <a href="/">Services</a>
+        </li>
+        <li className="navbar-link">
+          <a href="/">Contact</a>
+        </li>
+      </ul>
+    </div>
+  );
+};
+
 const Navigation = () => {
   const hamburguer = () => {
     const hamburguer = document.querySelector('.hamburguer');
-    const navbarLinks = document.querySelector('.navbar-links');
+    const navbarLinks = document.querySelector('.aside-nav');
     hamburguer.classList.toggle('active');
     navbarLinks.classList.toggle('show');
   };
@@ -18,30 +42,15 @@ const Navigation = () => {
           <img src={image.Logotipo} alt="Logo" />
         </a>
       </div>
-      <div className="navbar-links">
-        <ul className="navbar-ul-links">
-          <li className="navbar-link">
-            <a href="/">Aboult</a>
-          </li>
-          <li className="navbar-link">
-            <a href="/">Skills</a>
-          </li>
-          <li className="navbar-link">
-            <a href="/">Projects</a>
-          </li>
-          <li className="navbar-link">
-            <a href="/">Services</a>
-          </li>
-          <li className="navbar-link">
-            <a href="/">Contact</a>
-          </li>
-        </ul>
-      </div>
+      <LinksNavigation/>
       <div className="hamburguer" onClick={hamburguer}>
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
+      <aside className="aside-nav">
+        <LinksNavigation/>
+      </aside>
     </nav>
   );
 };
@@ -210,4 +219,4 @@ export const ContactUs = () => {
   );
 };
 
-export { Navigation, Footer, ProjectCarousel };
+export { Navigation, Footer, ProjectCarousel, LinksNavigation };

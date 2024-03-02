@@ -11,6 +11,21 @@
   transition: all 100ms;
 }
 
+.aside-nav {
+  position: absolute;
+  top: 100px;
+  width: 100%;
+  height: auto;
+  background-color: #ffffff;
+  transform: translateX(-100%);
+  transition: all 900ms;
+  padding: 15px;
+}
+
+.aside-nav.show {
+  transform: translateX(0);
+}
+
 .navbar {
   width: 100%;
   height: 100px;
@@ -680,6 +695,12 @@
 
   .navbar-links {
     display: none;
+  }
+
+  .aside-nav .navbar-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .navbar-ul-links {
