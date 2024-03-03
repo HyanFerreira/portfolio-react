@@ -32,8 +32,9 @@ function App() {
 
   return (
     <div className="App">
+      <div className="overflow"></div>
       <header className="header">
-        <Navigation></Navigation>
+        <Navigation />
         <div className="header-container">
           <div className="header-content-welcome">
             <div className="content-welcome">

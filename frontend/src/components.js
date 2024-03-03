@@ -2,25 +2,51 @@ import React, { useEffect, useState, useRef } from 'react';
 import emailjs from 'emailjs-com';
 import './App.css';
 import image from './images';
+import InputMask from 'react-input-mask';
 
-const LinksNavigation = () => {
+const LinksNavigation = ({ closeMenu }) => {
   return (
     <div className="navbar-links">
       <ul className="navbar-ul-links">
         <li className="navbar-link">
-          <a href="/">About</a>
+          <a href="/" onClick={closeMenu}>
+            About
+          </a>
         </li>
         <li className="navbar-link">
-          <a href="/">Skills</a>
+          <a
+            href="/"
+            onClick={() => {
+              closeMenu();
+            }}
+          >
+            Skills
+          </a>
         </li>
         <li className="navbar-link">
-          <a href="/">Projects</a>
+          <a
+            href="/"
+            onClick={() => {
+              closeMenu();
+            }}
+          >
+            Projects
+          </a>
         </li>
         <li className="navbar-link">
-          <a href="/">Services</a>
+          <a href="/" onClick={closeMenu}>
+            Services
+          </a>
         </li>
         <li className="navbar-link">
-          <a href="/">Contact</a>
+          <a
+            href="/"
+            onClick={() => {
+              closeMenu();
+            }}
+          >
+            Contact
+          </a>
         </li>
       </ul>
     </div>
@@ -28,11 +54,26 @@ const LinksNavigation = () => {
 };
 
 const Navigation = () => {
+  const closeMenu = () => {
+    const hamburguer = document.querySelector('.hamburguer');
+    const navbarLinks = document.querySelector('.aside-nav');
+    const overflow = document.querySelector('.overflow');
+    const body = document.querySelector('body');
+    hamburguer.classList.remove('active');
+    navbarLinks.classList.remove('show');
+    overflow.classList.remove('show');
+    body.classList.remove('block');
+  };
+
   const hamburguer = () => {
     const hamburguer = document.querySelector('.hamburguer');
     const navbarLinks = document.querySelector('.aside-nav');
+    const overflow = document.querySelector('.overflow');
+    const body = document.querySelector('body');
     hamburguer.classList.toggle('active');
     navbarLinks.classList.toggle('show');
+    overflow.classList.toggle('show');
+    body.classList.toggle('block');
   };
 
   return (
@@ -42,14 +83,14 @@ const Navigation = () => {
           <img src={image.Logotipo} alt="Logo" />
         </a>
       </div>
-      <LinksNavigation/>
+      <LinksNavigation closeMenu={closeMenu} />
       <div className="hamburguer" onClick={hamburguer}>
         <div className="bar"></div>
         <div className="bar"></div>
         <div className="bar"></div>
       </div>
       <aside className="aside-nav">
-        <LinksNavigation/>
+        <LinksNavigation closeMenu={closeMenu} />
       </aside>
     </nav>
   );
@@ -157,9 +198,105 @@ const ProjectCarousel = () => {
 
 export const ContactUs = () => {
   const form = useRef();
+  const [errors, setErrors] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: '',
+  });
+
+  useEffect(() => {
+    const validateName = () => {
+      let name = document.getElementById('name').value;
+
+      if (name.length < 2 || !/^[a-zA-Z\s]*$/.test(name)) {
+        setErrors((prevState) => ({
+          ...prevState,
+          name: 'Por favor, insira um nome válido.',
+        }));
+      } else {
+        setErrors((prevState) => ({ ...prevState, name: '' }));
+      }
+    };
+
+    const validateEmail = () => {
+      let email = document.getElementById('email').value;
+
+      if (!/\S+@\S+\.\S+/.test(email)) {
+        setErrors((prevState) => ({
+          ...prevState,
+          email: 'Por favor, insira um email válido.',
+        }));
+      } else {
+        setErrors((prevState) => ({ ...prevState, email: '' }));
+      }
+    };
+
+    const validatePhone = () => {
+      let phone = document.getElementById('phone').value;
+
+      if (!phone.match(/^\(\d{2}\)\s\d{5}-\d{4}$/)) {
+        setErrors((prevState) => ({
+          ...prevState,
+          phone: 'Por favor, insira um telefone válido.',
+        }));
+      } else {
+        setErrors((prevState) => ({ ...prevState, phone: '' }));
+      }
+    };
+
+    const validateMessage = () => {
+      let message = document.getElementById('message').value;
+
+      if (!message) {
+        setErrors((prevState) => ({
+          ...prevState,
+          message: 'Por favor, insira uma mensagem.',
+        }));
+      } else {
+        setErrors((prevState) => ({ ...prevState, message: '' }));
+      }
+    };
+
+    document.getElementById('name').addEventListener('blur', validateName);
+    document.getElementById('email').addEventListener('blur', validateEmail);
+    document.getElementById('phone').addEventListener('blur', validatePhone);
+    document
+      .getElementById('message')
+      .addEventListener('blur', validateMessage);
+
+    return () => {
+      document.getElementById('name').removeEventListener('blur', validateName);
+      document
+        .getElementById('email')
+        .removeEventListener('blur', validateEmail);
+      document
+        .getElementById('phone')
+        .removeEventListener('blur', validatePhone);
+      document
+        .getElementById('message')
+        .removeEventListener('blur', validateMessage);
+    };
+  }, []);
 
   const sendEmail = (e) => {
     e.preventDefault();
+
+    let name = document.getElementById('name').value;
+    let email = document.getElementById('email').value;
+    let phone = document.getElementById('phone').value;
+    let message = document.getElementById('message').value;
+    let errorFormCamp = document.getElementById('errorFormCamp');
+
+    if (!name || !email || !phone || !message) {
+      errorFormCamp.innerText = 'Por favor, preencha todos os campos.';
+      return;
+    }
+
+    // if (errors.name || errors.email || errors.phone || errors.message) {
+    //   alert('Por favor, corrija os erros no formulário antes de enviar.');
+    //   return;
+    // }
 
     emailjs
       .sendForm(
@@ -185,19 +322,28 @@ export const ContactUs = () => {
         <label htmlFor="name" className="input-label">
           Name:
         </label>
-        <input type="text" id="name" name="name" required />
+        <input type="text" id="name" name="name" />
+        <span className="errorFeedback">{errors.name}</span>
       </div>
       <div className="label-input">
         <label htmlFor="phone" className="input-label">
           Phone number:
         </label>
-        <input type="phone" id="phone" name="phone" required />
+        <InputMask
+          mask="(99) 99999-9999"
+          maskChar=" "
+          type="tel"
+          id="phone"
+          name="phone"
+        />
+        <span className="errorFeedback">{errors.phone}</span>
       </div>
       <div className="label-input">
         <label htmlFor="email" className="input-label">
           Email:
         </label>
-        <input type="email" id="email" name="email" required />
+        <input type="email" id="email" name="email" />
+        <span className="errorFeedback">{errors.email}</span>
       </div>
       <div className="label-input">
         <label htmlFor="message" className="input-label">
@@ -208,13 +354,16 @@ export const ContactUs = () => {
           name="message"
           rows={4}
           cols={50}
-          required
           style={{ resize: 'vertical' }}
         />
+        <span className="errorFeedback">{errors.message}</span>
       </div>
       <button className="btn-submit" type="submit" value="Send">
         Submit
       </button>
+      <div className='errorFormCamp-content'>
+        <span id="errorFormCamp"></span>
+      </div>
     </form>
   );
 };
